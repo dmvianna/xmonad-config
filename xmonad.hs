@@ -23,7 +23,7 @@ main = do
     } `additionalKeys`
     [
     -- lock screen
-    ((mod4Mask .|. shiftMask, xK_z), spawn "xautolock -locknow")
+    ((mod4Mask .|. shiftMask, xK_z), spawn "slimlock")
 
     -- Decrement brightness
     , ((0, xK_F1),
