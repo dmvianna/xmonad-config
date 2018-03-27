@@ -27,11 +27,11 @@ main = do
 
     -- Decrement brightness
     , ((0, xK_F1),
-      spawn "/var/setuid-wrappers/light -U 5")
+      spawn "light -U 5")
 
     -- Increment brightness
     , ((0, xK_F2),
-    spawn "/var/setuid-wrappers/light -A 5")
+    spawn "light -A 5")
     ]
 
 myManageHook = composeOne
