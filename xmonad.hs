@@ -7,7 +7,8 @@ import           XMonad
 import           XMonad.Hooks.DynamicLog
 import           XMonad.Hooks.ManageDocks
 import           XMonad.Hooks.ManageHelpers
-import           XMonad.Util.EZConfig             (additionalKeys)
+import           XMonad.Util.EZConfig             (additionalKeys,
+                                                   additionalKeysP)
 import           XMonad.Util.Run                  (spawnPipe)
 
 main = do
@@ -20,19 +21,25 @@ main = do
     , normalBorderColor = "#cccccc"
     , focusedBorderColor = "#cd8b00"
     , modMask = mod4Mask -- depends on ~/.Xmodmap assigning Alt_R to mod3
-    } `additionalKeys`
-    [
+    } `additionalKeys` keyBindings
+    `additionalKeysP` mediaKeys
+
+keyBindings =
+  [
     -- lock screen
     ((mod4Mask .|. shiftMask, xK_z), spawn "slimlock")
+  ]
 
+mediaKeys =
+  [
     -- Decrement brightness
-    , ((0, xK_F1),
+    ("<XF86MonBrightnessDown>",
       spawn "light -U 5")
 
     -- Increment brightness
-    , ((0, xK_F2),
-    spawn "light -A 5")
-    ]
+  , ("<XF86MonBrightnessUp>",
+     spawn "light -A 5")
+  ]
 
 myManageHook = composeOne
   [ className =? "wpa_gui" -?> doCenterFloat
