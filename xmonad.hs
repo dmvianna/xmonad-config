@@ -27,7 +27,7 @@ main = do
 keyBindings =
   [
     -- lock screen
-    ((mod4Mask .|. shiftMask, xK_z), spawn "slimlock")
+    ((mod4Mask .|. shiftMask, xK_z), spawn "xautolock -locknow")
   ]
 
 mediaKeys =
