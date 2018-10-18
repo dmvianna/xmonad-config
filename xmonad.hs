@@ -32,13 +32,16 @@ keyBindings =
 
 mediaKeys =
   [
-    -- Decrement brightness
-    ("<XF86MonBrightnessDown>",
-      spawn "light -U 5")
+    ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ +1.5%")
+  , ("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@  -1.5%")
+  , ("<XF86AudioMute>", spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle")
 
-    -- Increment brightness
-  , ("<XF86MonBrightnessUp>",
-     spawn "light -A 5")
+  , ("<XF86AudioPlay>", spawn "playerctl play-pause")
+  , ("<XF86AudioPrev>", spawn "playerctl previous")
+  , ("<XF86AudioNext>", spawn "playerctl next")
+
+  , ("<XF86MonBrightnessDown>", spawn "light -U 5")
+  , ("<XF86MonBrightnessUp>", spawn "light -A 5")
   ]
 
 myManageHook = composeOne
