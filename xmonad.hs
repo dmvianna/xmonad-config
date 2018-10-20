@@ -15,8 +15,8 @@ main = do
   xmonad . docks . pagerHints $ def
     { manageHook = manageDocks
                    <+> myManageHook
-                   <+> manageHook defaultConfig
-    , layoutHook = avoidStruts $ layoutHook defaultConfig
+                   <+> manageHook def
+    , layoutHook = avoidStruts $ layoutHook def
     , terminal = "urxvt"
     , normalBorderColor = "#cccccc"
     , focusedBorderColor = "#cd8b00"
@@ -42,6 +42,9 @@ mediaKeys =
 
   , ("<XF86MonBrightnessDown>", spawn "light -U 5")
   , ("<XF86MonBrightnessUp>", spawn "light -A 5")
+
+  , ("<XF86KdbBrightnessUp>", spawn "kbdlight up 5%"),
+    ("<XF86KdbBrightnessDown", spawn "kbdlight down 5%")
   ]
 
 myManageHook = composeOne
