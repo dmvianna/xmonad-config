@@ -2,17 +2,18 @@
 
 import           System.IO
 import           System.Process
-import           System.Taffybar.Hooks.PagerHints (pagerHints)
+import           System.Taffybar.Support.PagerHints (pagerHints)
 import           XMonad
 import           XMonad.Hooks.DynamicLog
+import           XMonad.Hooks.EwmhDesktops          (ewmh)
 import           XMonad.Hooks.ManageDocks
 import           XMonad.Hooks.ManageHelpers
-import           XMonad.Util.EZConfig             (additionalKeys,
-                                                   additionalKeysP)
-import           XMonad.Util.Run                  (spawnPipe)
+import           XMonad.Util.EZConfig               (additionalKeys,
+                                                     additionalKeysP)
+import           XMonad.Util.Run                    (spawnPipe)
 
 main = do
-  xmonad . docks . pagerHints $ def
+  xmonad . docks . ewmh . pagerHints $ def
     { manageHook = manageDocks
                    <+> myManageHook
                    <+> manageHook def
@@ -27,7 +28,7 @@ main = do
 keyBindings =
   [
     -- lock screen
-    ((mod4Mask .|. shiftMask, xK_z), spawn "xautolock -locknow")
+    ((mod4Mask .|. shiftMask, xK_z), spawn "dm-tool lock")
   ]
 
 mediaKeys =
