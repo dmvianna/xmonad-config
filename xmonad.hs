@@ -47,6 +47,8 @@ mediaKeys =
 
   ]
 
-myManageHook = composeOne
-  [ className =? "wpa_gui" -?> doCenterFloat
+myManageHook = composeAll
+  [
+    className =? "Xmessage" --> doCenterFloat
+  , className =? "Nm-connection-editor" --> doCenterFloat
   ]
