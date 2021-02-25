@@ -27,6 +27,7 @@ keyBindings =
   [
     -- lock screen
     ((mod4Mask .|. shiftMask, xK_z), spawn "dm-tool lock")
+  , ((mod4Mask .|. shiftMask, xK_q), spawn "xfce4-session-logout")
   ]
 
 mediaKeys =
